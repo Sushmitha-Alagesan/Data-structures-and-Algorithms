@@ -1,0 +1,36 @@
+
+***************************************************************
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        # this is one line approach where set has O(n) space complexity - forming set
+        # and O(n) as Time complexity to pass through every element in set
+        return len(nums)!= len(set(nums))
+*****************************************************************
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        # without comparing the length using set
+        # the time and space complexity is O(n) as for loop iterates over all elements ad in worst case nums array of size n will be framed as set
+        distinct_set = set()
+        for idx in nums:
+            if idx in distinct_set:
+                return True
+            else:
+                distinct_set.add(idx)
+        return False
+*****************************************************************
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        # without comparing the length using set
+        # the time and space complexity is O(n) as for loop iterates over all elements and in worst case nums array of size n will be framed as count table 
+        # the .get() and .item takes an average of constant time
+        
+        count_table = {}
+        for idx in nums:
+            count_table[idx] = count_table.get(idx, 0) + 1
+
+        for key, values in count_table.items():
+            if values != 1:
+                return True
+        return False
+
+ 
