@@ -1,0 +1,22 @@
+***************************************
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        # approach 1 is to check whether the anagram is same after sorting
+        # time complexity will be O(nlogn) since sorting is used
+        # O(n) as space complexity as sorted fucntion takes the copy of the string
+        return sorted(s)==sorted(t)
+*********************************************
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+    
+    # The time and space complexity is O(s+t) as 2 count tables are generated 
+        count_table_s = {}
+        count_table_t = {}
+
+        for v1 in s:
+            count_table_s[v1] = count_table_s.get(v1, 0)+1
+        for v2 in t:
+            count_table_t[v2] = count_table_t.get(v2, 0)+1
+        
+        return count_table_s == count_table_t
+ **************************************************
