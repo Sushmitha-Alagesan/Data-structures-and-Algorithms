@@ -32,5 +32,8 @@ class Solution:
             if values != 1:
                 return True
         return False
+ ********************************************************
+ # diff approach 
+ set(collections.Counter(l1).values()) != set([1])
 
  
