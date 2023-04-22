@@ -1,0 +1,32 @@
+class Solution:
+    def canPermutePalindrome(self, s: str) -> bool:
+        # this approach takes time comlexity O(n) 
+        # SC O(1) the maximum size of the count table would be 128 ASCII characters
+        # even, odd, values
+        count = 0
+
+        count_table = {}
+        for char in s:
+            count_table[char] = count_table.get(char,0)+1
+
+        for val in count_table.values():
+            if val % 2 != 0:
+                count +=1
+
+        if count <= 1:
+            return True
+        return False
+**************************************************************
+class Solution:
+    def canPermutePalindrome(self, s: str) -> bool:
+        # this approach takes time comlexity O(n) 
+        # SC O(1) the maximum size of the set would be 128 ASCII characters
+        # even, odd, values
+        check = set()
+
+        for char in s:
+            if char in check:
+                check.remove(char)
+            else:
+                check.add(char)
+        return len(check) <= 1
