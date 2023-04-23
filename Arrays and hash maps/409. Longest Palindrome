@@ -1,0 +1,26 @@
+# with a given string find the length of the longest palindrome that can be formed from that
+# Time complexity O(n) where n is the length of the string, space complexity O(n), n is odd characters
+
+class Solution:
+    def longestPalindrome(self, s: str) -> int:
+        check = set()
+        for char in s:
+            if char in check:
+                check.remove(char)
+            else:
+                check.add(char)
+        if len(check) == 0:
+            return len(s)
+        else:
+            return len(s) - (len(check) - 1)
+*************************************************************************
+ 
+ def longestPalindrome(self, s):
+        return len(s) - max(sum(v & 1 for v in collections.Counter(s).values()) - 1, 0)
+        
+ *************************************************************************
+    
+    def longestPalindrome(self, s):
+        return min(sum(v & ~1 for v in collections.Counter(s).values()) + 1, len(s))
+        
+ ************************************************************************
