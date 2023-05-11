@@ -1,0 +1,37 @@
+Two pointer approach
+
+class Solution:
+    def isSubsequence(self, s: str, t: str) -> bool:
+        i ,j  = 0, 0
+
+        while i < len(s) and j < len(t):
+            if s[i] == t[j] :
+                i += 1
+            j += 1
+        return  i == len(s)
++++++++++++++++++++++++++++++++++++++++++++++
+Divide and conquer with greedy (recursively dividing and solving):
+
+class Solution:
+    def isSubsequence(self, s: str, t: str) -> bool:
+        left_bound ,right_bound = len(s), len(t)
+
+        def recursive_isSubsequence(left_index, right_index):
+            # base case, if length hit by the index
+            if left_bound == left_index:
+                return True
+            elif right_bound == right_index:
+                return False
+            # comparing both the strings
+            if s[left_index] == t[right_index]:
+                left_index += 1
+            right_index += 1
+
+            # calling the function recursively
+            return recursive_isSubsequence(left_index, right_index)
+
+        return recursive_isSubsequence(0, 0)
+ ======================================================
+ 
+ Greedy Match with Character Indices Hashmap:
+ 
