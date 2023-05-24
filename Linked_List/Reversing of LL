@@ -1,0 +1,40 @@
+
+Question : To reverse a linked list 1-->2--->3--->None
+There are 2 ways to approach this one is two pointers and another one is recursion
+
+
+
+----------------------------------
+Approach 1: 2 pointers (t=O(n) and  S=O(1))
+two pointers prev and curr is used, prev is assigned to none, current is assigned to head
+
+ None 1(head)-->2-->3-->4-->None
+ prev curr
+ 
+ untill the curr pointer reaches the none our loop will run
+ every time curr's next will be made to point prev
+ Then prev and curr pointer will be moved furthur by changing curr to prev, curr.next to curr
+ 
+ None 1(head)-->2-->3-->4-->None
+      prev      curr
+  
+
+
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        
+        curr, prev = head, None
+        while curr:
+            temp = curr.next
+            curr.next = prev
+            prev = curr
+            curr = temp
+        return prev
+--------------------------------------
+Approach 2 : recursion
+
